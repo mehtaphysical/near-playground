@@ -1,0 +1,41 @@
+{
+  "name": "near-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "jest": {
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect",
+      "<rootDir>/src/setupTests.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css)$": "identity-obj-proxy",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
+    }
+  },
+  "scripts": {
+    "start": "parcel serve src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-react": "^7.24.0",
+    "parcel": "^2.0.0-beta.2",
+    "prettier": "^2.3.0"
+  },
+  "dependencies": {
+    "assemblyscript": "^0.19.0",
+    "near-api-js": "^0.41.0",
+    "near-sdk-as": "^3.2.0",
+    "near-sdk-bindgen": "^3.2.0",
+    "react": "^17.0.2",
+    "react-ace": "^9.4.0",
+    "react-dom": "^17.0.2",
+    "visitor-as": "^0.6.0"
+  }
+}
