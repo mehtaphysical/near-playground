@@ -1,8 +1,10 @@
-import { Program, Transform, ASTBuilder } from 'visitor-as/as';
+import { Program } from "assemblyscript";
+import { Transform } from "assemblyscript/cli/transform";
+import { ASTBuilder } from "visitor-as/dist";
 
 export default () => {
-  const exported = [];
-  class Transformer extends Transform {
+  const abi = [];
+  class ABITransformer extends Transform {
     afterInitialize(program: Program): void {
       const input = program.filesByName.get('input');
 
@@ -20,13 +22,14 @@ export default () => {
         const returnType = ASTBuilder.build(
           original.declaration.signature.returnType
         );
-        exported.push({ params, returnType, name });
+
+        abi.push({ params, returnType, name });
       }
     }
   }
 
   return {
-    Transformer,
-    exported,
+    ABITransformer,
+    abi,
   };
 };
