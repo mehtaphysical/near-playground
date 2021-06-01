@@ -2,7 +2,7 @@
   "name": "near-playground",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/index.html",
   "jest": {
     "setupFilesAfterEnv": [
       "@testing-library/jest-dom/extend-expect",
