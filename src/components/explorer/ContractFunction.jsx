@@ -32,7 +32,7 @@ export default function ContractFunction({ addLog, fn, account }) {
     })
       .then(({ receipts_outcome, transaction_outcome, status }) => {
         receipts_outcome.forEach(({ outcome }) => {
-          outcome.logs.forEach(log => addLog({ level: 'info', text: `[${fn.name}] ${log}`}));
+          outcome.logs.forEach(log => addLog({ level: 'info', text: `[${fn.name}] ${log}` }));
         });
 
         addLog({
@@ -55,7 +55,7 @@ export default function ContractFunction({ addLog, fn, account }) {
             <input className={`ring ring-${colorByType[param.type] || 'gray'}-500 w-3/4 p-1 rounded-r`} type="text" name={param.name} placeholder={param.type} />
           </fieldset>
         ))}
-        <button disabled={loading} className={`${loading ? 'animate-pulse' : ''} block bg-blue-500 w-full rounded p-2 my-2`}>Run</button>
+        <button disabled={loading} className={`${loading ? 'animate-pulse' : ''} block bg-blue-500 text-white w-full rounded p-2 my-2`}>Run</button>
       </form>
     </>
   );

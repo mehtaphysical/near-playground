@@ -54,7 +54,7 @@ export function getStatus(): string {
         {
           stdout,
           stderr,
-          transforms: [includeBytes, ABITransformer, bindgen, exportAs],
+          transforms: [includeBytes, bindgen, ABITransformer, exportAs],
           readFile: (name) => {
             if (name.includes('json.lib.ts')) {
               return sources['node_modules/near-sdk-as/assembly/json.lib.ts'];
@@ -83,7 +83,7 @@ export function getStatus(): string {
 
   return (
     <section className={className}>
-      <button className="bg-green-500 rounded p-2 block mr-0 ml-auto" onClick={() => setCompiled(input)}>Compile</button>
+      <button className="bg-green-500 text-white rounded p-2 block mr-0 ml-auto" onClick={() => setCompiled(input)}>Compile</button>
       <AceEditor
         style={{ background: '#151515' }}
         width="100%"
