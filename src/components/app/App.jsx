@@ -18,9 +18,7 @@ function App() {
     getKey() {
       return KeyPair.fromString(window.localStorage.getItem('near-playground-pair'));
     },
-    setKey() {
-
-    }
+    setKey() {}
   }
 
   const near = new Near({
@@ -35,7 +33,7 @@ function App() {
   if (!localStorage.getItem('near-playground-pair')) {
     const keypair = KeyPair.fromRandom('ed25519');
     window.localStorage.setItem('near-playground-pair', keypair.toString());
-    window.location.assign(`https://wallet.testnet.near.org/login?public_key=${keypair.getPublicKey()}&success_url=http://localhost:1234`)
+    window.location.assign(`https://wallet.testnet.near.org/login?public_key=${keypair.getPublicKey()}&success_url=${window.location.href}`)
     return null;
   }
 
