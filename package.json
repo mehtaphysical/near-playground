@@ -14,9 +14,9 @@
     }
   },
   "scripts": {
-    "postinstall": "node post-install.js",
+    "postinstall": "node fs.js && node post-install.js",
     "start": "parcel serve src/index.html",
-    "build": "parcel build --no-scope-hoist src/index.html"
+    "build": "parcel build src/index.html"
   },
   "keywords": [],
   "author": "",

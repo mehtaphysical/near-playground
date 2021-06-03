@@ -23,27 +23,24 @@ fs.writeFileSync(
   './src/fs.json',
   JSON.stringify(
     {
-      ...getFiles('../../near-sdk-as/sdk', 'node_modules/near-sdk-as'),
-      ...getFiles('../../near-sdk-as/sdk-core', 'node_modules/near-sdk-core'),
-      ...getFiles('../../near-sdk-as/bindgen', 'node_modules/near-sdk-bindgen'),
+      ...getFiles('./node_modules/near-sdk-as', 'node_modules/near-sdk-as'),
+      ...getFiles('./node_modules/near-sdk-core', 'node_modules/near-sdk-core'),
       ...getFiles(
-        '../../near-sdk-as/near-mock-vm',
-        'node_modules/near-mock-vm'
+        './node_modules/near-sdk-bindgen',
+        'node_modules/near-sdk-bindgen'
       ),
+      ...getFiles('./node_modules/near-mock-vm', 'node_modules/near-mock-vm'),
+      ...getFiles('./node_modules/as-bignum', 'node_modules/as-bignum'),
       ...getFiles(
-        '../../near-sdk-as/node_modules/as-bignum',
-        'node_modules/as-bignum'
-      ),
-      ...getFiles(
-        '../../near-sdk-as/node_modules/assemblyscript-temporal',
+        './node_modules/assemblyscript-temporal',
         'node_modules/assemblyscript-temporal'
       ),
       ...getFiles(
-        '../../near-sdk-as/node_modules/assemblyscript-regex',
+        './node_modules/assemblyscript-regex',
         'node_modules/assemblyscript-regex'
       ),
       ...getFiles(
-        '../../near-sdk-as/node_modules/assemblyscript-json',
+        './node_modules/assemblyscript-json',
         'node_modules/assemblyscript-json'
       ),
     },
