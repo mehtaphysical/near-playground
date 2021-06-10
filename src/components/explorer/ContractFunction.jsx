@@ -1,20 +1,37 @@
 import React, { useState } from 'react';
 
-const colorByType = {
-  string: 'ring-green',
-  u8: 'ring-blue',
-  u16: 'ring-blue',
-  u32: 'ring-blue',
-  u64: 'ring-blue',
-  u128: 'ring-blue',
-  i8: 'ring-blue',
-  i16: 'ring-blue',
-  i32: 'ring-blue',
-  i64: 'ring-blue',
-  f32: 'ring-blue',
-  f64: 'ring-blue',
-  bool: 'ring-yellow',
-  void: 'ring-pink',
+const ringColorByType = {
+  string: 'ring-green-500',
+  u8: 'ring-blue-500',
+  u16: 'ring-blue-500',
+  u32: 'ring-blue-500',
+  u64: 'ring-blue-500',
+  u128: 'ring-blue-500',
+  i8: 'ring-blue-500',
+  i16: 'ring-blue-500',
+  i32: 'ring-blue-500',
+  i64: 'ring-blue-500',
+  f32: 'ring-blue-500',
+  f64: 'ring-blue-500',
+  bool: 'ring-yellow-500',
+  void: 'ring-pink-500',
+};
+
+const bgColorByType = {
+  string: 'bg-green-500',
+  u8: 'bg-blue-500',
+  u16: 'bg-blue-500',
+  u32: 'bg-blue-500',
+  u64: 'bg-blue-500',
+  u128: 'bg-blue-500',
+  i8: 'bg-blue-500',
+  i16: 'bg-blue-500',
+  i32: 'bg-blue-500',
+  i64: 'bg-blue-500',
+  f32: 'bg-blue-500',
+  f64: 'bg-blue-500',
+  bool: 'bg-yellow-500',
+  void: 'bg-pink-500',
 };
 
 export default function ContractFunction({ addLog, fn, account }) {
@@ -56,9 +73,9 @@ export default function ContractFunction({ addLog, fn, account }) {
           {fn.name}
         </p>
         <p
-          className={`inline-flex bg-${
-            colorByType[fn.returnType] || 'gray'
-          }-600 text-white rounded-full h-8 px-3 m-auto justify-center items-center text-center`}
+          className={`inline-flex ${
+            bgColorByType[fn.returnType] || 'bg-gray-500'
+          } text-white rounded-full h-8 px-3 m-auto justify-center items-center text-center`}
         >
           {fn.returnType}
         </p>
@@ -68,14 +85,14 @@ export default function ContractFunction({ addLog, fn, account }) {
           <fieldset key={param.name} className="p-2 my-2">
             <label
               className={`ring ${
-                colorByType[param.type] || 'gray-500'
+                ringColorByType[param.type] || 'ring-gray-500'
               } w-1/4 inline-block bg-white p-1 rounded-l`}
             >
               {param.name}
             </label>
             <input
               className={`ring ${
-                colorByType[param.type] || 'gray-500'
+                ringColorByType[param.type] || 'ring-gray-500'
               } w-3/4 p-1 rounded-r`}
               type="text"
               name={param.name}
