@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Near, Account, KeyPair } from 'near-api-js';
+import { BarLoader } from 'react-spinners';
 import Editor from '../editor/Editor';
 import Explorer from '../explorer/Explorer';
 
@@ -7,10 +8,10 @@ const NEAR_PLAYGROUND_CONTRACT_ID_KEY = 'near-playground-contract-id';
 const NEAR_PLAYGROUND_KEY_PAIR_KEY = 'near-playground-pair';
 
 const levelToColor = {
-  info: 'white',
-  error: 'red',
-  warn: 'yellow',
-  success: 'green',
+  info: 'text-white',
+  error: 'text-red-500',
+  warn: 'text-yellow-500',
+  success: 'text-green-500',
 };
 
 function App() {
@@ -56,7 +57,14 @@ function App() {
   }, []);
 
   if (!contractId) {
-    return null;
+    return (
+      <BarLoader
+        css="position: absolute"
+        height={2}
+        width="100vw"
+        color="#6366F1"
+      />
+    );
   }
 
   const handleCompile = ({ abi, binary }) => {
@@ -84,7 +92,7 @@ function App() {
         />
         <section className="text-white col-span-1 h-full overflow-scroll">
           {logs.map(({ level, text }) => (
-            <pre className={`text-${levelToColor[level]}-500`}>
+            <pre className={levelToColor[level]}>
               {level.toUpperCase()}: {text}
             </pre>
           ))}

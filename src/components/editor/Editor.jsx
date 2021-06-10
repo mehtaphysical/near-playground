@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AceEditor from 'react-ace';
 
-import fs from '../../fs.json';
 import asc from 'assemblyscript/dist/asc';
 import includeBytes from 'visitor-as/dist/examples/includeBytesTransform.js';
 import bindgen from 'near-sdk-bindgen';
@@ -31,13 +30,13 @@ export function getStatus(): string {
   const [compiled, setCompiled] = useState(input);
 
   useEffect(() => {
-    asc.ready.then(() => {
+    Promise.all([import('../../fs.json'), asc.ready]).then(([dependencies]) => {
       const { ABITransformer, abi } = createABITransformer();
       const stdout = asc.createMemoryStream();
       const stderr = asc.createMemoryStream();
 
       const out = {};
-      const sources = { 'input.ts': compiled, ...fs };
+      const sources = { 'input.ts': compiled, ...dependencies };
       asc.main(
         [
           '--runtime',
@@ -76,14 +75,18 @@ export function getStatus(): string {
           else addLog({ level: 'success', text: 'Compilation Successful' });
         }
       );
-      onCompiled({ abi, binary: out.binary })
-
+      onCompiled({ abi, binary: out.binary });
     });
   }, [compiled]);
 
   return (
     <section className={className}>
-      <button className="bg-green-500 text-white rounded p-2 block mr-0 ml-auto" onClick={() => setCompiled(input)}>Compile</button>
+      <button
+        className="bg-green-500 text-white rounded p-2 block mr-0 ml-auto"
+        onClick={() => setCompiled(input)}
+      >
+        Compile
+      </button>
       <AceEditor
         style={{ background: '#151515' }}
         width="100%"
@@ -96,5 +99,5 @@ export function getStatus(): string {
         theme="monokai"
       />
     </section>
-  )
+  );
 }
